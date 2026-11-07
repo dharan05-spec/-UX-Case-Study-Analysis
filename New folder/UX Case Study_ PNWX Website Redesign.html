@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX Case Study: Pacific Northwest X-Ray Website Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --primary:#1D4ED8; --text:#111827; --muted:#4B5563; --bg:#FFFFFF; --soft:#F9FAFB; --accent:#EFF6FF; --border:#E5E7EB; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Inter",system-ui,sans-serif; color:var(--text); background:var(--bg); line-height:1.7; font-size:16px; }
+    .wrap { max-width:840px; margin:0 auto; padding:48px 24px 96px; }
+    header.case-hero { border-bottom:1px solid var(--border); padding-bottom:32px; margin-bottom:40px; }
+    .kicker { font-size:.85rem; font-weight:600; color:var(--primary); text-transform:uppercase; letter-spacing:.06em; margin-bottom:12px; }
+    h1 { font-size:2.4rem; font-weight:800; letter-spacing:-.02em; line-height:1.2; margin-bottom:16px; }
+    .summary { font-size:1.1rem; color:var(--muted); }
+    .meta { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:28px; }
+    .meta div { background:var(--soft); border:1px solid var(--border); border-radius:10px; padding:14px 16px; font-size:.9rem; }
+    .meta strong { display:block; color:var(--muted); font-weight:500; font-size:.8rem; margin-bottom:2px; }
+    h2 { font-size:1.6rem; font-weight:700; margin:48px 0 12px; letter-spacing:-.01em; }
+    h3 { font-size:1.15rem; font-weight:700; margin:28px 0 8px; }
+    p { margin-bottom:14px; color:var(--muted); }
+    ul, ol { margin:0 0 16px 22px; color:var(--muted); }
+    li { margin-bottom:6px; }
+    strong { color:var(--text); }
+    .callout { background:var(--accent); border-left:4px solid var(--primary); padding:16px 20px; border-radius:8px; margin:20px 0; color:var(--text); }
+    .note { background:var(--soft); border:1px solid var(--border); padding:14px 18px; border-radius:8px; font-size:.95rem; color:var(--muted); margin:16px 0; }
+    table { width:100%; border-collapse:collapse; margin:16px 0 24px; font-size:.95rem; }
+    th, td { text-align:left; padding:12px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+    th { background:var(--soft); color:var(--text); font-weight:600; }
+    td { color:var(--muted); }
+    .before-after { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+    .ba-card { border:1px solid var(--border); border-radius:12px; padding:18px; }
+    .ba-card h4 { font-size:.95rem; margin-bottom:8px; color:var(--text); }
+    .ba-card p { font-size:.92rem; margin:0; }
+    footer.case-end { margin-top:56px; padding-top:24px; border-top:1px solid var(--border); font-size:.9rem; color:var(--muted); }
+    @media (max-width:640px) { h1 { font-size:1.85rem; } .meta, .before-after { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="case-hero">
+    <div class="kicker">UX Case Study</div>
+    <h1>Redesigning the Pacific Northwest X-Ray Website for Clarity and Speed</h1>
+    <p class="summary">The current site presents a radiology equipment catalog as a flat list of links, with contact details buried at the bottom. This study documents a heuristic evaluation of the homepage, the problems it revealed, the wireframe and design decisions that address them, and a planned usability test to validate the result.</p>
+    <div class="meta">
+      <div><strong>Role</strong>UX/UI design (student project)</div>
+      <div><strong>Platform</strong>Desktop web (1440 px)</div>
+      <div><strong>Method</strong>Heuristic evaluation, wireframing, design</div>
+    </div>
+  </header>
+
+  <h2>1. Problem statement and goals</h2>
+  <p>The homepage at www2.pnwx.com is the main entry point for a radiology supply catalog, yet it gives visitors no clear place to start. Fourteen product links sit in one undifferentiated block, the search box has no visible button, and the phone number and address appear only in the footer.</p>
+
+  <div class="callout">
+    <strong>Problem statement:</strong> Visitors looking for a specific radiology product or a sales contact cannot quickly find the right category or phone number, because the homepage has no visual hierarchy and no clear primary action.
+  </div>
+
+  <h3>Goals</h3>
+  <ul>
+    <li>Make product categories easy to scan from the homepage.</li>
+    <li>Make the phone number and quote request reachable from every screen.</li>
+    <li>Present the brand as current and credible for a business buyer.</li>
+  </ul>
+
+  <h2>2. Research methods</h2>
+  <p>This study used a heuristic evaluation of the live homepage, measured against Nielsen's usability heuristics. The findings are my own observations of the page as it was reviewed, not results from user testing.</p>
+
+  <div class="note">
+    <strong>What this study does not include yet:</strong> No user interviews or usability sessions have been run. The competitive analysis is limited to the current site. The planned test in Section 7 describes how user testing will confirm or revise these findings.
+  </div>
+
+  <h3>Heuristic evaluation: findings</h3>
+  <table>
+    <tr><th>Heuristic</th><th>Observation on the current homepage</th><th>Severity</th></tr>
+    <tr><td>Visibility of system status and hierarchy</td><td>Search, popular products, and contact details share the same visual weight. Nothing signals a starting point.</td><td>High</td></tr>
+    <tr><td>Recognition rather than recall</td><td>Fourteen products appear as one flat list, so visitors must recognize a product name to find it.</td><td>High</td></tr>
+    <tr><td>Match between system and real world</td><td>The page says "This web site is our catalog," which describes the site's function but not what a visitor should do first.</td><td>Medium</td></tr>
+    <tr><td>User control and freedom</td><td>The search field has no visible submit button, so the main task is less obvious than it should be.</td><td>Medium</td></tr>
+    <tr><td>Aesthetic and minimalist design</td><td>Text-heavy layout with little spacing between sections. Copyright reads 1997 to 2023.</td><td>Medium</td></tr>
+  </table>
+
+  <h3>Competitive analysis</h3>
+  <p>Not yet completed. Before submitting, review two or three radiology supply sites and note how each one places search, categories, and contact details. Add those notes here.</p>
+
+  <h2>3. Pain point analysis</h2>
+  <ol>
+    <li><strong>No starting point.</strong> The homepage does not guide a visitor toward the most common task.</li>
+    <li><strong>Flat product list.</strong> Fourteen unlabeled links are hard to scan and compare.</li>
+    <li><strong>Contact details buried.</strong> The phone number appears only at the bottom of the page.</li>
+    <li><strong>Unclear search action.</strong> The search field lacks a visible button.</li>
+    <li><strong>Dated appearance.</strong> The design and copyright year may reduce confidence for a business buyer.</li>
+  </ol>
+
+  <h2>4. Target user</h2>
+  <p>The site describes its catalog as radiology equipment, supplies, and parts, so the likely audience is radiology department staff or purchasing coordinators who order from a known catalog. This is an assumed profile based on the site's content, not a researched persona.</p>
+  <table>
+    <tr><th>Stage</th><th>Likely action</th><th>Friction on the current site</th></tr>
+    <tr><td>Arrive</td><td>Opens homepage</td><td>No clear starting point</td></tr>
+    <tr><td>Browse</td><td>Looks for a product type</td><td>Flat list, no grouping</td></tr>
+    <tr><td>Contact</td><td>Looks for a phone number</td><td>Only in the footer</td></tr>
+    <tr><td>Decide</td><td>Requests a quote</td><td>No obvious quote path</td></tr>
+  </table>
+
+  <h2>5. Wireframe iterations</h2>
+  <h3>Iteration 1: Structure</h3>
+  <p>Low-fidelity grayscale wireframes mapped five sections: navigation, hero with a call to action, feature cards, social proof, and footer. Flows connected the landing page to sign up, onboarding, and features.</p>
+  <h3>Iteration 2: Hierarchy and grouping</h3>
+  <p>The product list was split into five categories so visitors can choose a group before scanning product names. A single search field became the hero's main action.</p>
+  <h3>Iteration 3: Contact</h3>
+  <p>The phone number moved into the header and hero, and a dedicated contact section was added with a short checklist of what to have ready before calling.</p>
+
+  <h2>6. Final design</h2>
+  <p>The final desktop layout uses a blue primary color, the Inter typeface, and an 8 px spacing scale.</p>
+  <div class="before-after">
+    <div class="ba-card">
+      <h4>Before</h4>
+      <p>Flat text list of 14 products. Search with no button. Phone number at the bottom.</p>
+    </div>
+    <div class="ba-card">
+      <h4>After</h4>
+      <p>Labeled search button in the hero. Five grouped categories. Phone number in the header and hero.</p>
+    </div>
+  </div>
+
+  <h3>Design decisions</h3>
+  <table>
+    <tr><th>Decision</th><th>Addresses</th></tr>
+    <tr><td>Five product categories</td><td>Flat list and recognition over recall</td></tr>
+    <tr><td>Labeled search button in the hero</td><td>Unclear search action</td></tr>
+    <tr><td>Phone number in header and hero</td><td>Buried contact details</td></tr>
+    <tr><td>Blue primary color with dark body text</td><td>Readability and credibility</td></tr>
+  </table>
+
+  <h3>Accessibility</h3>
+  <ul>
+    <li>Body text #4B5563 on white (about 7.5:1) and headings #111827 on white (about 17.9:1), both above WCAG AA.</li>
+    <li>Visible focus states on links, buttons, and inputs.</li>
+    <li>Skip link, labeled search input, and semantic landmarks.</li>
+  </ul>
+
+  <h2>7. Planned usability test</h2>
+  <p>To validate the redesign, run a short test with at least three people who match the target user, or classmates if no buyers are available. Give each person these tasks on the original site and then on the redesign, and record the results.</p>
+  <table>
+    <tr><th>Task</th><th>Measure</th></tr>
+    <tr><td>Find a lead apron</td><td>Completed yes or no; time in seconds</td></tr>
+    <tr><td>Find the phone number</td><td>Completed yes or no; time in seconds</td></tr>
+    <tr><td>Find test phantoms</td><td>Completed yes or no; time in seconds</td></tr>
+  </table>
+  <p>Results are not yet available. Add them here once the test is complete.</p>
+
+  <h2>8. Next steps</h2>
+  <ul>
+    <li>Complete the competitive analysis with two or three sites.</li>
+    <li>Run the planned usability test and add the results to Section 7.</li>
+    <li>Build the category pages and product detail template.</li>
+  </ul>
+
+  <footer class="case-end">
+    <p>Project files: wireframes (PDF), desktop redesign (HTML), and Figma file <em>[add link when created]</em>.</p>
+  </footer>
+
+</div>
+</body>
+</html>
